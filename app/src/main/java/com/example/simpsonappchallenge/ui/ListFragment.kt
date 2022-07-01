@@ -41,6 +41,8 @@ class ListFragment : Fragment() {
         recyclerView = binding.recyclerView
 
 
+
+
     }
 
     fun initRecyclerView(simpsonList: List<SimpsonSimpleCharacter.DataSimple>){
