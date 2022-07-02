@@ -12,12 +12,10 @@ import com.example.simpsonappchallenge.MainActivity
 import com.example.simpsonappchallenge.databinding.FragmentListBinding
 import com.example.simpsonappchallenge.model.SimpsonSimpleCharacter
 
-
 class ListFragment : Fragment() {
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,25 +38,35 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
 
-
-
-
-    }
-
-    fun initRecyclerView(simpsonList: List<SimpsonSimpleCharacter.DataSimple>){
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.adapter = CharacterAdapter(simpsonList) { character, isClickListener ->
-            if(isClickListener) {
-                Log.d("", "Setlistener for ${character.name}")
-//                navigateToDetail(character.id)
+        (requireActivity() as MainActivity).getSimpsonList {
+            if (it != null) {
+                initRecyclerView(it)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun initRecyclerView(simpsonList: List<SimpsonSimpleCharacter.DataSimple>){
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+        binding.recyclerView.adapter = CharacterAdapter(simpsonList) { character, isClickListener ->
+            if(isClickListener) {
+                navigateToDetail(character.id)
+            }
+        }
+    }
+
+    private fun navigateToDetail(id: Int) {
+
     }
 
     companion object {
 
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             ListFragment().apply {
                 arguments = Bundle().apply {
 
