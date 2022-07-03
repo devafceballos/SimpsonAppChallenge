@@ -59,8 +59,9 @@ class ListFragment : Fragment() {
         }
     }
 
-    private fun navigateToDetail(id: Int) {
-
+    private fun navigateToDetail(characterId: Int) {
+        Log.d("", "Navigate to Detail collect")
+        (activity as MainActivity).initDetailFragment(characterId)
     }
 
     companion object {

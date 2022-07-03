@@ -4,5 +4,5 @@ interface InitFragmentMethod {
 
     fun initListFragment()
 
-    fun initDetailFragment()
+    fun initDetailFragment(characterId: Int)
 }

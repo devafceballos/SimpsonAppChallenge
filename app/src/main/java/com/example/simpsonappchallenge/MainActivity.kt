@@ -3,8 +3,10 @@ package com.example.simpsonappchallenge
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.simpsonappchallenge.databinding.ActivityMainBinding
+import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 import com.example.simpsonappchallenge.model.SimpsonSimpleCharacter
 import com.example.simpsonappchallenge.networking.SimpsonAPI
+import com.example.simpsonappchallenge.ui.DetailFragment
 import com.example.simpsonappchallenge.ui.InitFragmentMethod
 import com.example.simpsonappchallenge.ui.ListFragment
 
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity(), InitFragmentMethod {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         initListFragment()
     }
 
@@ -26,14 +29,29 @@ class MainActivity : AppCompatActivity(), InitFragmentMethod {
             .commit()
     }
 
-    override fun initDetailFragment() {
+    // This method init DetailFragment
 
+    override fun initDetailFragment(characterId: Int) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val detailFragment = DetailFragment.newInstance(characterId)
+        fragmentTransaction.replace(R.id.main_fragment_container, detailFragment, "detailFragment").addToBackStack(null)
+            .commit()
     }
 
     //This method get the characters´s list (Retrofit)
 
     fun getSimpsonList(listener: (List<SimpsonSimpleCharacter.DataSimple>?) -> Unit) {
         SimpsonAPI.getSimpsonList {
+            if (it != null){
+                listener(it)
+            } else {
+                listener(null)
+            }
+        }
+    }
+
+    fun getDetail(characterId: Int, listener: (SimpsonDetailCharacter.DataDetail?) -> Unit) {
+        SimpsonAPI.getDetail(characterId) {
             if (it != null){
                 listener(it)
             } else {
