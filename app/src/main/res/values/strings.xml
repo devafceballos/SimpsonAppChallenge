@@ -3,4 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="arrow">arrow</string>
+    <string name="other">other</string>
+    <string name="likes">other</string>
+    <string name="occupation">occupation</string>
+    <string name="age">age</string>
 </resources>

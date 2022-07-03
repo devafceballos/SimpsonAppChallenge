@@ -26,6 +26,10 @@ class MainActivity : AppCompatActivity(), InitFragmentMethod {
             .commit()
     }
 
+    override fun initDetailFragment() {
+
+    }
+
     //This method get the characters´s list (Retrofit)
 
     fun getSimpsonList(listener: (List<SimpsonSimpleCharacter.DataSimple>?) -> Unit) {
@@ -37,6 +41,5 @@ class MainActivity : AppCompatActivity(), InitFragmentMethod {
             }
         }
     }
-
 
 }
