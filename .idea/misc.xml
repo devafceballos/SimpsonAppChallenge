@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sasuk/AndroidStudioProjects/SimpsonAppChallenge/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.147" />
         <entry key="..\:/Users/sasuk/AndroidStudioProjects/SimpsonAppChallenge/app/src/main/res/layout/activity_main.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/sasuk/AndroidStudioProjects/SimpsonAppChallenge/app/src/main/res/layout/fragment_detail.xml" value="0.32364096080910243" />
-        <entry key="..\:/Users/sasuk/AndroidStudioProjects/SimpsonAppChallenge/app/src/main/res/layout/fragment_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/sasuk/AndroidStudioProjects/SimpsonAppChallenge/app/src/main/res/layout/fragment_form_step1.xml" value="0.259963768115942" />
+        <entry key="..\:/Users/sasuk/AndroidStudioProjects/SimpsonAppChallenge/app/src/main/res/layout/fragment_form_step2.xml" value="0.259963768115942" />
+        <entry key="..\:/Users/sasuk/AndroidStudioProjects/SimpsonAppChallenge/app/src/main/res/layout/fragment_list.xml" value="0.75" />
         <entry key="..\:/Users/sasuk/AndroidStudioProjects/SimpsonAppChallenge/app/src/main/res/layout/item_view_holder.xml" value="0.33" />
       </map>
     </option>

@@ -43,6 +43,7 @@ class ListFragment : Fragment() {
                 initRecyclerView(it)
             }
         }
+        addCharacter()
     }
 
     override fun onDestroyView() {
@@ -62,6 +63,13 @@ class ListFragment : Fragment() {
     private fun navigateToDetail(characterId: Int) {
         Log.d("", "Navigate to Detail collect")
         (activity as MainActivity).initDetailFragment(characterId)
+    }
+
+    private fun addCharacter(){
+        //binding button
+        binding.buttonAddCharacter.setOnClickListener {
+            (requireActivity() as MainActivity).initFormFragmentStep1()
+        }
     }
 
     companion object {
