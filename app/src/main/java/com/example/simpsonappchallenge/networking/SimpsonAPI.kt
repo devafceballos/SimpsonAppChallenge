@@ -1,5 +1,6 @@
 package com.example.simpsonappchallenge.networking
 
+import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 import com.example.simpsonappchallenge.model.SimpsonSimpleCharacter
 import retrofit2.Call
 import retrofit2.Response
@@ -17,6 +18,23 @@ object SimpsonAPI {
                     listener(response.body()!!.data)
                 } else {
 
+                    listener(null)
+                }
+            }
+        })
+        return request
+    }
+
+    fun getDetail(characterId: Int, listener: (SimpsonDetailCharacter.DataDetail?) -> Unit) : Call<SimpsonDetailCharacter> {
+        val request = RetrofitInstance.getApiService().getDetailSimpsonCharacter(characterId)
+        request.enqueue(object: retrofit2.Callback<SimpsonDetailCharacter> {
+            override fun onFailure(call: Call<SimpsonDetailCharacter>, throwable: Throwable){
+                listener(null)
+            }
+            override fun onResponse(call: Call<SimpsonDetailCharacter>, response: Response<SimpsonDetailCharacter>) {
+                if (response.body() != null && response.body()!!.result){
+                    listener(response.body()!!.dataDetail)
+                } else {
                     listener(null)
                 }
             }
