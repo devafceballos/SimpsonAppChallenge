@@ -1,19 +1,28 @@
 package com.example.simpsonappchallenge.ui
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.simpsonappchallenge.R
+import com.example.simpsonappchallenge.MainActivity
+import com.example.simpsonappchallenge.databinding.FragmentFormStep2Binding
+import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
+import com.example.simpsonappchallenge.networking.SimpsonAPI
 
 class FormFragmentStep2 : Fragment() {
 
+    var dataDetail: SimpsonDetailCharacter.DataDetail = SimpsonDetailCharacter.DataDetail()
+
+    private var _binding: FragmentFormStep2Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
+            dataDetail = it.getSerializable("keyNewChar") as SimpsonDetailCharacter.DataDetail
         }
     }
 
@@ -22,16 +31,44 @@ class FormFragmentStep2 : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_form_step2, container, false)
+        _binding = FragmentFormStep2Binding.inflate(inflater, container, false)
+        return _binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //SaveButton
+        binding.buttomSave.setOnClickListener {
+            saveButton()
+        }
+
+        binding.buttonCancel2.setOnClickListener {
+            (requireActivity() as MainActivity).backToListFragment()
+        }
+    }
+
+    private fun saveButton() {
+        dataDetail.other = binding.etBio.text.toString()
+        dataDetail.photo = binding.etUrl.text.toString()
+
+        SimpsonAPI.createNewSimpsonCharacter(dataDetail, requireContext())
+        binding.buttomSave.isEnabled = false
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            val activity = requireActivity()
+            if (activity is MainActivity){
+                activity.backToListFragment()
+            }
+        }, 2000)
     }
 
     companion object {
-
         @JvmStatic
-        fun newInstance() =
+        fun newInstanceOfFormFragmentStep2(dataDetail: SimpsonDetailCharacter.DataDetail) =
             FormFragmentStep2().apply {
                 arguments = Bundle().apply {
-
+                    putSerializable("keyNewChar", dataDetail)
                 }
             }
     }

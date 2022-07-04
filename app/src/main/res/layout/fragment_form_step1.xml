@@ -39,7 +39,7 @@
 
     <EditText
         android:id="@+id/etOccupation"
-        android:hint="@string/occupation"
+        android:hint="@string/Occupation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
 
     <EditText
         android:id="@+id/etLikes"
-        android:hint="@string/likes"
+        android:hint="@string/Likes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,17 +57,6 @@
         app:layout_constraintTop_toBottomOf="@+id/etOccupation"
         android:layout_marginTop="32dp"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonCancel"
-        android:layout_width="157dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:hint="@string/Cancel"
-        android:textColorHint="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonNext"
@@ -80,5 +69,18 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonCancel"
+        android:layout_width="157dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp"
+        android:hint="@string/Cancel"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/orangeButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

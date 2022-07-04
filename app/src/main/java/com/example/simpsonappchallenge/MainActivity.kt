@@ -6,10 +6,7 @@ import com.example.simpsonappchallenge.databinding.ActivityMainBinding
 import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 import com.example.simpsonappchallenge.model.SimpsonSimpleCharacter
 import com.example.simpsonappchallenge.networking.SimpsonAPI
-import com.example.simpsonappchallenge.ui.DetailFragment
-import com.example.simpsonappchallenge.ui.FormFragmentStep1
-import com.example.simpsonappchallenge.ui.InitFragmentMethods
-import com.example.simpsonappchallenge.ui.ListFragment
+import com.example.simpsonappchallenge.ui.*
 
 
 class MainActivity : AppCompatActivity(), InitFragmentMethods {
@@ -44,7 +41,15 @@ class MainActivity : AppCompatActivity(), InitFragmentMethods {
     }
     //This method init second step of FormFragment
     override fun initFormFragmentStep2(dataDetail: SimpsonDetailCharacter.DataDetail) {
-        TODO("Not yet implemented")
+        val formFragmentStep2 = FormFragmentStep2.newInstanceOfFormFragmentStep2(dataDetail)
+        supportFragmentManager.beginTransaction().replace(R.id.main_fragment_container, formFragmentStep2, "formularyFragment2" ).addToBackStack(null)
+            .commit()
+    }
+
+    fun backToListFragment(){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val listFragment = ListFragment()
+        fragmentTransaction.replace(R.id.main_fragment_container, listFragment ).commit()
     }
 
     //This method get the characters´s list (Retrofit)

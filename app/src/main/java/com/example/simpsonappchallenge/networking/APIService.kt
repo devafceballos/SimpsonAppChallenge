@@ -3,9 +3,7 @@ package com.example.simpsonappchallenge.networking
 import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 import com.example.simpsonappchallenge.model.SimpsonSimpleCharacter
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface APIService {
     @GET("/characters")
@@ -21,5 +19,13 @@ interface APIService {
         "Content-Type: application/json"
     )
     fun getDetailSimpsonCharacter(@Query("id") id: Int): Call<SimpsonDetailCharacter>
+
+    @POST("/characters")
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
+    fun putNewSimpsonCharacter(@Body simpsonDataDetail: SimpsonDetailCharacter.DataDetail): Call<SimpsonDetailCharacter>
+
 
 }

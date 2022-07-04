@@ -1,5 +1,7 @@
 package com.example.simpsonappchallenge.networking
 
+import android.content.Context
+import android.widget.Toast
 import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 import com.example.simpsonappchallenge.model.SimpsonSimpleCharacter
 import retrofit2.Call
@@ -40,5 +42,24 @@ object SimpsonAPI {
             }
         })
         return request
+    }
+
+    fun createNewSimpsonCharacter(simpsonDataDetail : SimpsonDetailCharacter.DataDetail, context: Context){
+        RetrofitInstance.getApiService().putNewSimpsonCharacter(simpsonDataDetail)
+            .enqueue(object : retrofit2.Callback<SimpsonDetailCharacter> {
+                override fun onResponse(
+                    call: Call<SimpsonDetailCharacter>,
+                    response: Response<SimpsonDetailCharacter>,
+                ) {
+                    if (response.isSuccessful && response.body() != null && response.body()!!.result ){
+                        Toast.makeText(context, "Done!", Toast.LENGTH_SHORT).show()
+
+                    } else Toast.makeText(context, "Character save failure", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onFailure(call: Call<SimpsonDetailCharacter>, t: Throwable) {
+                    t
+                }
+            })
     }
 }

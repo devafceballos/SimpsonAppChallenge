@@ -9,5 +9,10 @@
     <string name="age">age</string>
     <string name="Cancel">Cancel</string>
     <string name="Next">Next</string>
+    <string name="Bio">Bio</string>
+    <string name="Url_image">URL image</string>
+    <string name="Save">Save</string>
+    <string name="Occupation">Occupation</string>
+    <string name="Likes">Likes</string>
 
 </resources>

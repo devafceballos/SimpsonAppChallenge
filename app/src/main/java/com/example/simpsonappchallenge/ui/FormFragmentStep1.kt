@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.simpsonappchallenge.R
+import com.example.simpsonappchallenge.MainActivity
 import com.example.simpsonappchallenge.databinding.FragmentFormStep1Binding
 import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 
@@ -40,9 +40,8 @@ class FormFragmentStep1 : Fragment() {
 
         //Cancel button logic
         binding.buttonCancel.setOnClickListener {
-            //add back logic. To the listFragment!
+            (requireActivity() as MainActivity).backToListFragment()
         }
-
     }
 
     private fun nextButton() {
@@ -53,7 +52,7 @@ class FormFragmentStep1 : Fragment() {
         newCharacterData.age = binding.etAge.text.toString().toInt()
         newCharacterData.likes = binding.etLikes.text.toString()
         newCharacterData.occupation = binding.etOccupation.text.toString()
-        //add the fragmentForm step 2 method!
+        (requireActivity() as MainActivity).initFormFragmentStep2(newCharacterData)
     }
 
     companion object {
