@@ -27,5 +27,11 @@ interface APIService {
     )
     fun putNewSimpsonCharacter(@Body simpsonDataDetail: SimpsonDetailCharacter.DataDetail): Call<SimpsonDetailCharacter>
 
+    @DELETE("/characters")
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
+    fun deleteSimpsonCharacter(@Query("id") id: Int): Call<SimpsonSimpleCharacter>
 
 }

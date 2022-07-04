@@ -29,8 +29,11 @@ class MainActivity : AppCompatActivity(), InitFragmentMethods {
     // This method init DetailFragment
     override fun initDetailFragment(characterId: Int) {
         val detailFragment = DetailFragment.newInstance(characterId)
-        supportFragmentManager.beginTransaction().replace(R.id.main_fragment_container, detailFragment, "detailFragment").addToBackStack(null)
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_right)
+            .replace(R.id.main_fragment_container, detailFragment, "detailFragment").addToBackStack(null)
             .commit()
+
     }
 
     //This method init first step of FormFragment

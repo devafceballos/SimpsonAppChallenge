@@ -22,6 +22,11 @@ class CharacterAdapter(private val simpsonsCharacterList: List<SimpsonSimpleChar
         holder.itemView.setOnClickListener {
             onClickListener(item, true)
         }
+
+        holder.itemView.setOnLongClickListener {
+            onClickListener(item, false)
+            true
+        }
     }
 
     override fun getItemCount(): Int = simpsonsCharacterList.size

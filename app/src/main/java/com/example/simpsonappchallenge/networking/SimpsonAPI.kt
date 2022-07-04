@@ -2,6 +2,8 @@ package com.example.simpsonappchallenge.networking
 
 import android.content.Context
 import android.widget.Toast
+import com.example.simpsonappchallenge.MainActivity
+import com.example.simpsonappchallenge.databinding.FragmentListBinding
 import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 import com.example.simpsonappchallenge.model.SimpsonSimpleCharacter
 import retrofit2.Call
@@ -54,10 +56,31 @@ object SimpsonAPI {
                     if (response.isSuccessful && response.body() != null && response.body()!!.result ){
                         Toast.makeText(context, "Done!", Toast.LENGTH_SHORT).show()
 
-                    } else Toast.makeText(context, "Character save failure", Toast.LENGTH_SHORT).show()
+                    } else Toast.makeText(context, "Please try again later", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onFailure(call: Call<SimpsonDetailCharacter>, t: Throwable) {
+                    t
+                }
+            })
+    }
+
+    fun deleteCharacterAction(characterId: Int, context: Context, binding: FragmentListBinding){
+
+        RetrofitInstance.getApiService().deleteSimpsonCharacter(characterId)
+            .enqueue(object : retrofit2.Callback<SimpsonSimpleCharacter> {
+                override fun onResponse(
+                    call: Call<SimpsonSimpleCharacter>,
+                    response: Response<SimpsonSimpleCharacter>,
+                ) {
+                    if (response.isSuccessful && response.body() != null && response.body()!!.result ){
+                        binding.recyclerView.removeAllViews()
+                        (context as MainActivity).backToListFragment()
+
+                    } else Toast.makeText(context, "Failure delete", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onFailure(call: Call<SimpsonSimpleCharacter>, t: Throwable) {
                     t
                 }
             })

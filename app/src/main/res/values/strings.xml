@@ -3,16 +3,14 @@
     <string name="Name">Name</string>
     <string name="LastName">LastName</string>
     <string name="arrow">arrow</string>
-    <string name="other">other</string>
-    <string name="likes">likes</string>
-    <string name="occupation">occupation</string>
-    <string name="age">age</string>
     <string name="Cancel">Cancel</string>
     <string name="Next">Next</string>
     <string name="Bio">Bio</string>
     <string name="Url_image">URL image</string>
     <string name="Save">Save</string>
-    <string name="Occupation">Occupation</string>
-    <string name="Likes">Likes</string>
+    <string name="Occupation">Occupation:</string>
+    <string name="Likes">Likes:</string>
+    <string name="Age">Age:</string>
+    <string name="Other">Other:</string>
 
 </resources>

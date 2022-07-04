@@ -33,6 +33,7 @@ class DetailFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return _binding?.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
