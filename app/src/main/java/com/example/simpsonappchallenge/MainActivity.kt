@@ -15,14 +15,14 @@ class MainActivity : AppCompatActivity(), InitFragmentMethods {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
         initListFragment()
     }
 
     // This method init ListFragment
     override fun initListFragment() {
         val listFragment = ListFragment()
-        supportFragmentManager.beginTransaction().add(R.id.main_fragment_container, listFragment, "listFragment")
+        supportFragmentManager.beginTransaction()
+            .add(R.id.main_fragment_container, listFragment, "listFragment")
             .commit()
     }
 
@@ -31,34 +31,41 @@ class MainActivity : AppCompatActivity(), InitFragmentMethods {
         val detailFragment = DetailFragment.newInstance(characterId)
         supportFragmentManager.beginTransaction()
             .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_right)
-            .replace(R.id.main_fragment_container, detailFragment, "detailFragment").addToBackStack(null)
+            .replace(R.id.main_fragment_container, detailFragment, "detailFragment")
+            .addToBackStack(null)
             .commit()
-
     }
 
     //This method init first step of FormFragment
     override fun initFormFragmentStep1() {
         val formFragment = FormFragmentStep1.newInstanceOfFormFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.main_fragment_container, formFragment, "formularyFragment1").addToBackStack(null)
-            .commit()
-    }
-    //This method init second step of FormFragment
-    override fun initFormFragmentStep2(dataDetail: SimpsonDetailCharacter.DataDetail) {
-        val formFragmentStep2 = FormFragmentStep2.newInstanceOfFormFragmentStep2(dataDetail)
-        supportFragmentManager.beginTransaction().replace(R.id.main_fragment_container, formFragmentStep2, "formularyFragment2" ).addToBackStack(null)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_fragment_container, formFragment, "formularyFragment1")
+            .addToBackStack(null)
             .commit()
     }
 
-    fun backToListFragment(){
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
+    //This method init second step of FormFragment
+    override fun initFormFragmentStep2(dataDetail: SimpsonDetailCharacter.DataDetail) {
+        val formFragmentStep2 = FormFragmentStep2.newInstanceOfFormFragmentStep2(dataDetail)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_fragment_container, formFragmentStep2, "formularyFragment2")
+            .addToBackStack(null)
+            .commit()
+    }
+
+    //This method back to the ListFragment
+    fun backToListFragment() {
         val listFragment = ListFragment()
-        fragmentTransaction.replace(R.id.main_fragment_container, listFragment ).commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_fragment_container, listFragment)
+            .commit()
     }
 
     //This method get the characters´s list (Retrofit)
     fun getSimpsonList(listener: (List<SimpsonSimpleCharacter.DataSimple>?) -> Unit) {
         SimpsonAPI.getSimpsonList {
-            if (it != null){
+            if (it != null) {
                 listener(it)
             } else {
                 listener(null)
@@ -69,7 +76,7 @@ class MainActivity : AppCompatActivity(), InitFragmentMethods {
     //This method get the characters´s detail (Retrofit)
     fun getDetail(characterId: Int, listener: (SimpsonDetailCharacter.DataDetail?) -> Unit) {
         SimpsonAPI.getDetail(characterId) {
-            if (it != null){
+            if (it != null) {
                 listener(it)
             } else {
                 listener(null)

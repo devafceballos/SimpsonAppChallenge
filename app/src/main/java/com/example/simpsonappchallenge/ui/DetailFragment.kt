@@ -39,7 +39,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as MainActivity).getDetail(parameterId!!) {
-            if (it != null){
+            if (it != null) {
                 renderCharacter(it)
             } else {
                 Toast.makeText(context, "Error al cargar detalle", Toast.LENGTH_SHORT).show()
@@ -48,7 +48,7 @@ class DetailFragment : Fragment() {
     }
 
     //Render character method
-    private fun renderCharacter(character: SimpsonDetailCharacter.DataDetail){
+    private fun renderCharacter(character: SimpsonDetailCharacter.DataDetail) {
         _binding?.detailName?.text = character.name
         _binding?.detailLastName?.text = character.lastname
         _binding?.tvAge?.text = character.age.toString()

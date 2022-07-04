@@ -38,11 +38,11 @@ class FormFragmentStep2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //SaveButton
+        //Save button
         binding.buttomSave.setOnClickListener {
             saveButton()
         }
-
+        //Cancel button
         binding.buttonCancel2.setOnClickListener {
             (requireActivity() as MainActivity).backToListFragment()
         }
@@ -52,12 +52,14 @@ class FormFragmentStep2 : Fragment() {
         dataDetail.other = binding.etBio.text.toString()
         dataDetail.photo = binding.etUrl.text.toString()
 
+        //Block button after save new character
         SimpsonAPI.createNewSimpsonCharacter(dataDetail, requireContext())
         binding.buttomSave.isEnabled = false
 
+        //Handler to wait and show block button
         Handler(Looper.getMainLooper()).postDelayed({
             val activity = requireActivity()
-            if (activity is MainActivity){
+            if (activity is MainActivity) {
                 activity.backToListFragment()
             }
         }, 2000)

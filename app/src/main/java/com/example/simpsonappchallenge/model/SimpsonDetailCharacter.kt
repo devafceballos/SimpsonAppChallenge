@@ -9,9 +9,9 @@ data class SimpsonDetailCharacter(
     @SerializedName("message")
     val message: String = "",
     @SerializedName("result")
-    val result: Boolean = false
+    val result: Boolean = false,
 
-) {
+    ) {
     data class DataDetail(
         @SerializedName("age")
         var age: Int = 0,
@@ -28,6 +28,6 @@ data class SimpsonDetailCharacter(
         @SerializedName("other")
         var other: String = "",
         @SerializedName("photo")
-        var photo: String = ""
+        var photo: String = "",
     ) : Serializable
 }

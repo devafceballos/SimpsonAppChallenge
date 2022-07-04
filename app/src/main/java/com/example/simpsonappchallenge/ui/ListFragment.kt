@@ -57,9 +57,10 @@ class ListFragment : Fragment() {
     }
 
     private fun initRecyclerView(simpsonList: List<SimpsonSimpleCharacter.DataSimple>) {
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerView.adapter = CharacterAdapter(simpsonList) { character, isClickListener ->
-            if(isClickListener) {
+            if (isClickListener) {
                 navigateToDetail(character.id)
             } else {
                 showDeleteDialog(character)
@@ -73,22 +74,22 @@ class ListFragment : Fragment() {
     }
 
     private fun addCharacter() {
-        //binding button
         binding.buttonAddCharacter.setOnClickListener {
             (requireActivity() as MainActivity).initFormFragmentStep1()
         }
     }
 
+    //Dialog method for delete action
     private fun showDeleteDialog(character: SimpsonSimpleCharacter.DataSimple) {
 
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Delete character?")
-        builder.setMessage("delete ${character.name +" "+ character.lastname}?")
+        builder.setMessage("delete ${character.name + " " + character.lastname}?")
 
         builder.setPositiveButton(android.R.string.yes) { dialog, which ->
             Toast.makeText(requireContext(),
                 "Character delete", Toast.LENGTH_SHORT).show()
-            deleteCharacterAction(character.id, requireContext(), binding )
+            deleteCharacterAction(character.id, requireContext(), binding)
 
         }
         builder.setNegativeButton(android.R.string.no) { dialog, which ->
