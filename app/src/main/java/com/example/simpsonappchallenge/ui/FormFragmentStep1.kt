@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.simpsonappchallenge.MainActivity
 import com.example.simpsonappchallenge.databinding.FragmentFormStep1Binding
 import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
+import java.lang.NumberFormatException
 
 class FormFragmentStep1 : Fragment() {
 
@@ -44,19 +46,20 @@ class FormFragmentStep1 : Fragment() {
         }
     }
 
-    private fun nextButton() {
+    private fun nextButton(){
+        val newDataDetail = SimpsonDetailCharacter.DataDetail()
+        newDataDetail.name = binding.etName.text.toString()
+        newDataDetail.lastname = binding.etLastName.text.toString()
+        newDataDetail.likes = binding.etLikes.text.toString()
+        newDataDetail.occupation = binding.etOccupation.text.toString()
+        newDataDetail.age = if (binding.etAge.text.isEmpty()) 0 else binding.etAge.text.toString().toInt()
 
-        val newCharacterData = SimpsonDetailCharacter.DataDetail()
-        newCharacterData.name = binding.etName.text.toString()
-        newCharacterData.lastname = binding.etLastName.text.toString()
-        newCharacterData.age = binding.etAge.text.toString().toInt()
-        newCharacterData.likes = binding.etLikes.text.toString()
-        newCharacterData.occupation = binding.etOccupation.text.toString()
-        (requireActivity() as MainActivity).initFormFragmentStep2(newCharacterData)
+        if (newDataDetail.isForm1FieldsCompleted())
+        (requireActivity() as MainActivity).initFormFragmentStep2(newDataDetail)
+            else Toast.makeText(requireContext(), "Some fields are empty", Toast.LENGTH_LONG).show()
     }
 
     companion object {
-
         @JvmStatic
         fun newInstanceOfFormFragment() =
             FormFragmentStep1().apply {

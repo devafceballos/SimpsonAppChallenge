@@ -50,9 +50,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="12dp"
                 android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailName"
-                app:layout_constraintBottom_toBottomOf="parent"
                 tools:text="LastName" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,4 +30,13 @@ data class SimpsonDetailCharacter(
         @SerializedName("photo")
         var photo: String = "",
     ) : Serializable
+    {
+        fun isForm1FieldsCompleted(): Boolean {
+            return  name.isNotEmpty() &&
+                    lastname.isNotEmpty() &&
+                    age > 0 &&
+                    occupation.isNotEmpty() &&
+                    likes.isNotEmpty()
+        }
+    }
 }

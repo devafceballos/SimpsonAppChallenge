@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Simpson App Challenge</string>
-    <string name="Name">Name</string>
-    <string name="LastName">LastName</string>
+    <string name="Name">Name:</string>
+    <string name="LastName">LastName:</string>
     <string name="arrow">arrow</string>
     <string name="Cancel">Cancel</string>
     <string name="Next">Next</string>

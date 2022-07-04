@@ -22,6 +22,7 @@ class ListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //App bar
         super.onCreate(savedInstanceState)
         arguments?.let {
         }
@@ -84,7 +85,7 @@ class ListFragment : Fragment() {
 
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Delete character?")
-        builder.setMessage("delete ${character.name + " " + character.lastname}?")
+        builder.setMessage("Delete ${character.name + " " + character.lastname}?")
 
         builder.setPositiveButton(android.R.string.yes) { dialog, which ->
             Toast.makeText(requireContext(),

@@ -13,6 +13,7 @@ import com.example.simpsonappchallenge.databinding.FragmentDetailBinding
 import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 import com.squareup.picasso.Picasso
 
+
 class DetailFragment : Fragment() {
 
     private var parameterId: Int? = null
@@ -21,8 +22,11 @@ class DetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         arguments?.let {
             parameterId = it.getInt("idKey")
+
+
         }
     }
 
