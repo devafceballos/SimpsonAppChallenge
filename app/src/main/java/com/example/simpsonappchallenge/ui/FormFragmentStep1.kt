@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.simpsonappchallenge.MainActivity
+import com.example.simpsonappchallenge.R
 import com.example.simpsonappchallenge.databinding.FragmentFormStep1Binding
 import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 import java.lang.NumberFormatException
@@ -34,6 +35,11 @@ class FormFragmentStep1 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //NavigationBar
+        binding.formToolBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        binding.formToolBar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
         //Next button logic
         binding.buttonNext.setOnClickListener {

@@ -26,7 +26,6 @@ class DetailFragment : Fragment() {
         arguments?.let {
             parameterId = it.getInt("idKey")
 
-
         }
     }
 
@@ -42,6 +41,12 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.detailToolBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        binding.detailToolBar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         (requireActivity() as MainActivity).getDetail(parameterId!!) {
             if (it != null) {
                 renderCharacter(it)

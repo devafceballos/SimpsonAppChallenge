@@ -13,7 +13,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:scrollbars="vertical"
-        app:layoutManager="LinearLayoutManager"/>
+        app:layoutManager="LinearLayoutManager"
+        android:layout_marginTop="24dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonAddCharacter"

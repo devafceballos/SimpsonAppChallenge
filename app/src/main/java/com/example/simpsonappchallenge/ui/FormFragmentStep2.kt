@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.simpsonappchallenge.MainActivity
+import com.example.simpsonappchallenge.R
 import com.example.simpsonappchallenge.databinding.FragmentFormStep2Binding
 import com.example.simpsonappchallenge.model.SimpsonDetailCharacter
 import com.example.simpsonappchallenge.networking.SimpsonAPI
@@ -37,6 +38,11 @@ class FormFragmentStep2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //NavigationBar
+        binding.form2ToolBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        binding.form2ToolBar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
         //Save button
         binding.buttomSave.setOnClickListener {

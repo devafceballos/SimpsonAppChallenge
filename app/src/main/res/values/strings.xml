@@ -12,5 +12,7 @@
     <string name="Likes">Likes:</string>
     <string name="Age">Age:</string>
     <string name="Other">Other:</string>
+    <string name="character_info">Character profile</string>
+    <string name="Add_character">Add character</string>
 
 </resources>
