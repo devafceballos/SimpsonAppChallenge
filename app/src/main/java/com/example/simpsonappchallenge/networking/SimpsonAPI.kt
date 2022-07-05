@@ -74,7 +74,7 @@ object SimpsonAPI {
                 }
 
                 override fun onFailure(call: Call<SimpsonDetailCharacter>, t: Throwable) {
-                    t
+                    Toast.makeText(context, "Service failure", Toast.LENGTH_SHORT).show()
                 }
             })
     }

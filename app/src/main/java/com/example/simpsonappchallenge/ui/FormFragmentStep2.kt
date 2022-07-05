@@ -45,7 +45,7 @@ class FormFragmentStep2 : Fragment() {
         }
 
         //Save button
-        binding.buttomSave.setOnClickListener {
+        binding.buttonSave.setOnClickListener {
             saveButton()
         }
         //Cancel button
@@ -60,7 +60,8 @@ class FormFragmentStep2 : Fragment() {
 
         //Block button after save new character
         SimpsonAPI.createNewSimpsonCharacter(dataDetail, requireContext())
-        binding.buttomSave.isEnabled = false
+        binding.buttonSave.isClickable = false
+        binding.buttonSave.alpha = 0.5f
 
         //Handler to wait and show block button
         Handler(Looper.getMainLooper()).postDelayed({

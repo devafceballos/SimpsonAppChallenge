@@ -5,4 +5,8 @@
         <item name="hintTextColor">@color/textGray</item>
         <item name="backgroundTint">@color/textGray</item>
     </style>
+
+    <style name="detail_text_style">
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

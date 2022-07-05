@@ -69,9 +69,16 @@ class DetailFragment : Fragment() {
 
     //Load image with Picasso
     private fun loadImage(character: SimpsonDetailCharacter.DataDetail, view: ImageView) {
-        Picasso.get()
-            .load(character.photo)
-            .into(view)
+        if (character.photo.isEmpty()){
+            Picasso.get()
+                .load(R.drawable.ic_launcher_foreground)
+                .into(view)
+        } else {
+            Picasso.get()
+                .load(character.photo)
+                .error(R.drawable.ic_launcher_foreground)
+                .into(view)
+        }
     }
 
     companion object {
