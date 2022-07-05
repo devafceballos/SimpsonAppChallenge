@@ -7,7 +7,7 @@
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:layout_marginTop="16dp"
-    app:cardCornerRadius="16dp"
+    app:cardCornerRadius="22dp"
     android:backgroundTint="@color/cardGray">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,11 +45,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/arrow"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"/>
+            app:srcCompat="@drawable/ic_path_36_4"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
