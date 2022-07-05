@@ -51,7 +51,7 @@ class DetailFragment : Fragment() {
             if (it != null) {
                 renderCharacter(it)
             } else {
-                Toast.makeText(context, "Error al cargar detalle", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Fail to load detail", Toast.LENGTH_SHORT).show()
             }
         }
     }

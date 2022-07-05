@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.simpsonappchallenge.MainActivity
 import com.example.simpsonappchallenge.R
 import com.example.simpsonappchallenge.databinding.FragmentFormStep2Binding
@@ -46,6 +47,8 @@ class FormFragmentStep2 : Fragment() {
 
         //Save button
         binding.buttonSave.setOnClickListener {
+            binding.buttonSave.isClickable = false
+            binding.buttonSave.alpha = 0.5f
             saveButton()
         }
         //Cancel button
@@ -59,17 +62,22 @@ class FormFragmentStep2 : Fragment() {
         dataDetail.photo = binding.etUrl.text.toString()
 
         //Block button after save new character
-        SimpsonAPI.createNewSimpsonCharacter(dataDetail, requireContext())
-        binding.buttonSave.isClickable = false
-        binding.buttonSave.alpha = 0.5f
+        (requireActivity() as MainActivity).postNewCharacter(dataDetail) { isSuccessful ->
 
-        //Handler to wait and show block button
-        Handler(Looper.getMainLooper()).postDelayed({
-            val activity = requireActivity()
-            if (activity is MainActivity) {
-                activity.backToListFragment()
-            }
-        }, 2000)
+            if (isSuccessful != null) {
+                if (isSuccessful) {
+                    Toast.makeText(requireContext(), "New character saved", Toast.LENGTH_SHORT).show()
+                    (requireActivity() as MainActivity).backToListFragment()
+                } else saveCharacterErrorToast()
+
+            } else saveCharacterErrorToast()
+        }
+    }
+
+    private fun saveCharacterErrorToast(){
+        Toast.makeText(requireContext(), "Action fail. Try again", Toast.LENGTH_SHORT).show()
+        binding.buttonSave.isClickable = true
+        binding.buttonSave.alpha = 1f
     }
 
     companion object {

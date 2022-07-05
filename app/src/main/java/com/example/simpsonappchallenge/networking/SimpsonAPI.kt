@@ -58,7 +58,7 @@ object SimpsonAPI {
 
     fun createNewSimpsonCharacter(
         simpsonDataDetail: SimpsonDetailCharacter.DataDetail,
-        context: Context,
+        listener: (Boolean) -> Unit
     ) {
         RetrofitInstance.getApiService().putNewSimpsonCharacter(simpsonDataDetail)
             .enqueue(object : retrofit2.Callback<SimpsonDetailCharacter> {
@@ -67,14 +67,15 @@ object SimpsonAPI {
                     response: Response<SimpsonDetailCharacter>,
                 ) {
                     if (response.isSuccessful && response.body() != null && response.body()!!.result) {
-                        Toast.makeText(context, "Done!", Toast.LENGTH_SHORT).show()
+                        listener(true)
 
-                    } else Toast.makeText(context, "Please try again later", Toast.LENGTH_SHORT)
-                        .show()
+                    } else {
+                        listener(false)
+                    }
                 }
 
                 override fun onFailure(call: Call<SimpsonDetailCharacter>, t: Throwable) {
-                    Toast.makeText(context, "Service failure", Toast.LENGTH_SHORT).show()
+                    listener(false)
                 }
             })
     }
@@ -95,7 +96,6 @@ object SimpsonAPI {
                 }
 
                 override fun onFailure(call: Call<SimpsonSimpleCharacter>, t: Throwable) {
-                    t
                 }
             })
     }

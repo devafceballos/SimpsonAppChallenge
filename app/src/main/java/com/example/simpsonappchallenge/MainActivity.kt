@@ -84,4 +84,13 @@ class MainActivity : AppCompatActivity(), InitFragmentMethods {
         }
     }
 
+    fun postNewCharacter(character: SimpsonDetailCharacter.DataDetail, listener: (Boolean?) -> Unit ) {
+        SimpsonAPI.createNewSimpsonCharacter(character) {
+            if (it) {
+                listener(it)
+            } else {
+                listener(null)
+            }
+        }
+    }
 }
